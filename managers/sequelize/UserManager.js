@@ -1,5 +1,5 @@
 const Manager = require("./Manager");
-const User = require("./models/userModel");
+const User = require("./models/UserModel");
 
 module.exports = class UserManager extends Manager {
   static async create(params) {
