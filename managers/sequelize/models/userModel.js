@@ -12,6 +12,7 @@ const User = sequelize.define(
     username: Sequelize.STRING,
     password: Sequelize.STRING,
     email: Sequelize.STRING,
+    rol: Sequelize.STRING,
   }
 );
 
