@@ -1,6 +1,6 @@
-const TemplateManager = require(`../../${process.env.MANAGER}/TemplateManager`);
+const EventManager = require(`../../${process.env.MANAGER}/EventManager`);
 
-async function getTemplate(req, res) {
+async function getEvents(req, res) {
   console.log("Template controller get");
   const data = req.query;
 
@@ -17,11 +17,11 @@ async function getTemplate(req, res) {
   console.log(data);
 
   //(!) Validation
-  const template = await TemplateManager.find(data);
+  const template = await EventManager.findValue(values);
   //(!) Universal manager -> model response
   template !== null
     ? res.status(200).json(template[0])
     : res.status(404).json({ error: "Doesn't exist" });
 }
 
-module.exports = getTemplate;
+module.exports = getEvents;
