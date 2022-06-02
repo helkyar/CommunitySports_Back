@@ -3,7 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
-require("./managers/sequelize/models/associations")
+require("./managers/sequelize/models/associations");
 
 const PORT = process.env.PORT;
 
