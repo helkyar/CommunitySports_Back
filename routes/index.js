@@ -9,5 +9,6 @@ router.use("/session", require("./login"));
 // Other routes _____________________________________
 router.use("/template", require("./template"));
 router.use("/event", require("./event"));
+router.use("/user", require("./user"));
 
 module.exports = router;
