@@ -10,9 +10,10 @@ const selectSportByName = require('../../service/sport/selectSportByName')
  */
 const eventsDB = async (events) => {
     const response = events.map(async (event, i) => {
+        const sport = await selectSportByName(event.Sport)
         const newEvent = {
             id: v4(),
-            id_sport: (await selectSportByName(event.Sport)).id,
+            id_sport: sport.id,
             name: event.Centro,
             organizer: 0,
             latitude: event.Latitud,
@@ -27,7 +28,6 @@ const eventsDB = async (events) => {
             direction: event.Direccion,
             email: event.email
         }
-        console.log(newEvent);
         const eventSave = await insertEvent(newEvent);
         return eventSave
     })
