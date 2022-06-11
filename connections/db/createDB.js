@@ -3,8 +3,8 @@ const populateDB = require('./populateDB')
 
 const createDB = async () => {
     try {
-        console.log('centers');
-        await Pool.query(`
+        console.log('CREANDO TABLA -> centers');
+        const comp = await Pool.query(`
         CREATE TABLE IF NOT EXISTS centers(
             id VARCHAR(36) NOT NULL,
             name VARCHAR(100),
@@ -19,7 +19,7 @@ const createDB = async () => {
             PRIMARY KEY (id)
         )`)
 
-        console.log('sports');
+        console.log('CREANDO TABLA -> sports');
         await Pool.query(`
         CREATE TABLE IF NOT EXISTS sports(
             id VARCHAR(36) NOT NULL,
@@ -27,7 +27,7 @@ const createDB = async () => {
             PRIMARY KEY (id)
         )`)
 
-        console.log('users');
+        console.log('CREANDO TABLA -> users');
         await Pool.query(`
         CREATE TABLE IF NOT EXISTS users(
             id VARCHAR(36) NOT NULL,
@@ -40,7 +40,7 @@ const createDB = async () => {
             PRIMARY KEY (id)
         )`)
 
-        console.log('events');
+        console.log('CREANDO TABLA -> events');
         await Pool.query(`
         CREATE TABLE IF NOT EXISTS events(
             id VARCHAR(36) NOT NULL,
@@ -62,7 +62,7 @@ const createDB = async () => {
             FOREIGN KEY (id_sport) REFERENCES sports (id)
         )`)
 
-        console.log('sports_centers');
+        console.log('CREANDO TABLA -> sports_centers');
         await Pool.query(`
         CREATE TABLE IF NOT EXISTS sports_centers(
             id_center VARCHAR(36) NOT NULL,
@@ -71,7 +71,7 @@ const createDB = async () => {
             FOREIGN KEY (id_sport) REFERENCES sports (id)
         )`)
 
-        console.log('centers_events');
+        console.log('CREANDO TABLA -> centers_events');
         await Pool.query(`
         CREATE TABLE IF NOT EXISTS centers_events(
             id_center VARCHAR(36) NOT NULL,
@@ -80,7 +80,7 @@ const createDB = async () => {
             FOREIGN KEY (id_event) REFERENCES events (id)
         )`)
 
-        console.log('users_events');
+        console.log('CREANDO TABLA -> users_events');
         await Pool.query(`
         CREATE TABLE IF NOT EXISTS users_events(
             id_user VARCHAR(36) NOT NULL,
@@ -89,7 +89,9 @@ const createDB = async () => {
             FOREIGN KEY (id_event) REFERENCES events (id)
         )`)
 
-        populateDB();
+        if (!comp[0].warningStatus) {
+            populateDB();
+        }
 
     } catch (error) {
         console.log('db');
