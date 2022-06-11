@@ -89,9 +89,9 @@ const createDB = async () => {
             FOREIGN KEY (id_event) REFERENCES events (id)
         )`)
 
-        if (!comp[0].warningStatus) {
-            populateDB();
-        }
+        populateDB();
+
+        console.log(comp);
 
     } catch (error) {
         console.log('db');

@@ -5,7 +5,6 @@ const insertSportCenters = require("../../service/sports_centers/insertSportCent
 const sportsCentersDB = async (arr) => {
     const allSports = await selectAllSports();
     const allCentersWithSports = [...arr]
-    console.log(allCentersWithSports[0]);
 
     allCentersWithSports.map(async (center) => {
         allSports.map(async (sport) => {
