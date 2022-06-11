@@ -36,10 +36,6 @@ const populateDB = async () => {
     //Rellena la Tabla centers_events
     await centersEventsDB(events.data)
     console.log('Taba centers_events mokeada...');
-
-    console.log('=============');
-    console.log('TABLAS POBLADAS');
-    console.log('=============');
 }
 
 module.exports = populateDB

@@ -89,9 +89,12 @@ const createDB = async () => {
             FOREIGN KEY (id_event) REFERENCES events (id)
         )`)
 
-        populateDB();
+        const sports = await Pool.query(`SELECT * FROM sports`)
+        if (sports.rows.length < 1) {
+            populateDB();
+        }
 
-        console.log(comp);
+        console.log('TERMINADO DESPLIEGUE');
 
     } catch (error) {
         console.log('db');
