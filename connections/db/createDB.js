@@ -91,10 +91,12 @@ const createDB = async () => {
 
         const sports = await Pool.query(`SELECT * FROM sports`)
         if (sports.rows.length < 1) {
-            populateDB();
+            await populateDB();
         }
 
+        console.log('====================');
         console.log('TERMINADO DESPLIEGUE');
+        console.log('====================');
 
     } catch (error) {
         console.log('db');
