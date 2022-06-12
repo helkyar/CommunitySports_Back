@@ -7,9 +7,10 @@ router.use("/session", require("./login"));
 router.use("/utility", require('./utility'));
 
 // JWT middleware auth ______________________________
-router.use(require("../middlewares/token"));
+// router.use(require("../middlewares/token"));
 
 // Other routes _____________________________________
 router.use("/template", require("./template"));
+router.use("/event", require("./event"));
 
 module.exports = router;
