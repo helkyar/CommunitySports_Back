@@ -5,10 +5,10 @@ const Place = sequelize.define(
   // Name is automatically made plural by sequalize, why?
   "place",
   {
-    id:{
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
-        primaryKey: true,
+    id: {
+      type: Sequelize.UUID,
+      defaultValue: Sequelize.UUIDV4,
+      primaryKey: true,
     },
     room_number: Sequelize.INTEGER,
     accessibility: Sequelize.INTEGER,
