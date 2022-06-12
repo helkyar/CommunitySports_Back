@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 require('./connections/db/createDB')();
 
+
 const PORT = process.env.PORT;
 
 app.use(cors());
