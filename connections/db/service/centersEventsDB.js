@@ -6,7 +6,6 @@ const selectEventWithDirection = require("../../service/events/selectEventWithDi
 
 const centersEventsDB = async (arr) => {
     const allEventsWithoutId = [...arr];
-
     allEventsWithoutId.map(async (eventWithoutId, indexEvent) => {
         const center = await selectCenterByName(eventWithoutId.Centro);
         const event = await selectEventWithDirection(eventWithoutId.Direccion);
