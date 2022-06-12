@@ -27,6 +27,7 @@ module.exports = class Manager {
 
   static async executeQuery(model, query, params) {
     // (!) Erase once all models are definitive
+    console.log('------------------------------------')
     await model.sync({ alter: true });
 
     const sequelize = await this.connect();
@@ -41,6 +42,7 @@ module.exports = class Manager {
         if (query === this.queries.update) {
           return res[1].map((e) => e.dataValues);
         } else if (query === this.queries.findAll) {
+          console.log('en manager')
           return res.map((e) => e.dataValues);
         }
         return res?.dataValues ? [res.dataValues] : [];

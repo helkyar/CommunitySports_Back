@@ -1,8 +1,10 @@
 const Pool = require('../../getPool')
 
 const selectAllEvents = async () => {
+    console.log('en selectAllEvents')
     try {
-        const allEvents = Pool.query(`SELECT * FROM events`);
+        const allEvents = await Pool.query(`SELECT * FROM events`);
+        console.log('eventos',allEvents.rows)
         return allEvents.rows
     } catch (error) {
         console.log('selectAllEvents');

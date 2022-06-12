@@ -15,4 +15,9 @@ module.exports = class UserManager extends Manager {
     const params = [{ where: { id }, include: Event }];
     return await this.executeQuery(User, this.queries.findAllOf, params);
   }
+
+  static async findEvents({ user_id }) {
+    const params = [{ where: { user_id}, include: Event }];
+    return await this.executeQuery(Event, this.queries.findAllOf, params);
+  }
 };

@@ -3,6 +3,7 @@ const Event = require("./models/EventModel");
 
 module.exports = class EventManager extends Manager {
   static async findAll() {
+    console.log('en event manager')
     return await this.executeQuery(Event, this.queries.findAll);
   }
 
