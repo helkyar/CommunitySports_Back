@@ -14,6 +14,7 @@ module.exports = class Manager {
     insert: "create",
     find: "findByPk",
     findAll: "findAll",
+    findAllOf: "findAll",
     findName: "findOne",
     update: "update",
     delete: "destroy",
@@ -27,7 +28,7 @@ module.exports = class Manager {
   static async executeQuery(model, query, params) {
     // (!) Erase once all models are definitive
     await model.sync({ alter: true });
-    
+
     const sequelize = await this.connect();
     return await sequelize
       .sync()
