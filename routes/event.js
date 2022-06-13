@@ -1,6 +1,8 @@
 const router = require("express").Router();
 
 router.get("/search", require("../controllers/event/getEvents"));
+router.get("/user/:id", require("../controllers/event/getUserEvents"));
+router.get("/center/:id", require("../controllers/event/getCenterEvents"));
 router.get("/allevents", require("../controllers/event/getAllEvents"));
 router.post("/add", require("../controllers/event/postEvent"));
 
