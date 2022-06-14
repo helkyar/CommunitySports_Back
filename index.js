@@ -3,7 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 require('./connections/db/createNewDB')();
-require('./connections/db/createDB')();
+/* require('./connections/db/createDB')(); */
 
 
 const PORT = process.env.PORT;
