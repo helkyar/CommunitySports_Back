@@ -3,7 +3,9 @@ const Pool = require("../../getPool");
 const selectCenterEvents = async () => {
   console.log("en selectCenterEvents");
   try {
-    const allEvents = await Pool.query(`SELECT * FROM events`);
+    const allEvents = await Pool.query(
+      `SELECT * FROM events WHERE events.name = ${id}`
+    );
     console.log("eventos", allEvents.rows);
     return allEvents.rows;
   } catch (error) {

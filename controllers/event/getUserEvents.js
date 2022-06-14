@@ -2,12 +2,13 @@ const selectUserEvents = require("../../connections/service/events/selectUserEve
 
 async function getUserEvents(req, res) {
   const data = req.params;
+  const user = data.id;
 
   //(!) Validation
-  const template = await selectUserEvents(data);
+  const events = await selectUserEvents(data);
   //(!) Universal manager -> model response
-  template !== null
-    ? res.status(200).json(template)
+  events !== null
+    ? res.status(200).json({ events, user })
     : res.status(404).json({ error: "Doesn't exist" });
 }
 
