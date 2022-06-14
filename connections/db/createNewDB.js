@@ -1,11 +1,11 @@
-const Pool = require('../getPool');
+const Pool = require('../getDb');
 const populateDB = require('./populateDB')
 
 const createData = async () => {
     try {
-        console.log('CREANDO TABLA -> centers');
+        console.log('CREANDO BASE DE DATOS -> waffles');
         const comp = await Pool.query(`
-        CREATE DATABASE waffles`)
+        CREATE DATABASE waffles3`)
 
      
         console.log('====================');
