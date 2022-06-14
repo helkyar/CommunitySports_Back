@@ -4,6 +4,7 @@ async function postUserEvents(req, res) {
   const data = req.body;
 
   // Check if capacity < COUNT(users_events.id_user) where users_events.id_event = id_event;
+  //----participants < capacity COUNT(users_events) -> insertar en users_events
 
   //(!) Validation
   const template = await insertUserEvent(data);
