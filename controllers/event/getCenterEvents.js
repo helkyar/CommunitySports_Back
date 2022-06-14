@@ -7,8 +7,6 @@ async function getCenterEvents(req, res) {
   //(!) Validation
   const events = await selectCenterEvents(data);
 
-  console.log("EVENTOS", events);
-
   if (events) {
     events.map(async (event) => {
       let user = await selectEventUsers({ id: event.id });
@@ -18,7 +16,7 @@ async function getCenterEvents(req, res) {
   //(!) Universal manager -> model response
   setTimeout(() => {
     events !== null
-      ? res.status(200).json({ events, users })
+      ? res.status(200).json({ events })
       : res.status(404).json({ error: "Doesn't exist" });
   }, 1000);
 }

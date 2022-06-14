@@ -6,10 +6,18 @@ async function getUserEvents(req, res) {
 
   //(!) Validation
   const events = await selectUserEvents(data);
+
+  if (events) {
+    events.map(async (event) => {
+      return (event.users = user);
+    });
+  }
   //(!) Universal manager -> model response
-  events !== null
-    ? res.status(200).json({ events, user })
-    : res.status(404).json({ error: "Doesn't exist" });
+  setTimeout(() => {
+    events !== null
+      ? res.status(200).json({ events })
+      : res.status(404).json({ error: "Doesn't exist" });
+  }, 1000);
 }
 
 module.exports = getUserEvents;

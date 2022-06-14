@@ -8,10 +8,10 @@ async function getEvent(req, res) {
 
   //(!) Validation
   const event = await selectEvent(data);
-  const users = await selectEventUsers(data);
+  event.users = await selectEventUsers(data);
   //(!) Universal manager -> model response
   event !== null
-    ? res.status(200).json({ event, users })
+    ? res.status(200).json({ event })
     : res.status(404).json({ error: "Doesn't exist" });
 }
 

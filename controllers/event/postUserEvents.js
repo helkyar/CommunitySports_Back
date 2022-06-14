@@ -1,11 +1,16 @@
+const countUsers = require("../../connections/service/events/countUsers");
+const selectCapacityEvent = require("../../connections/service/events/selectCapacityEvent");
 const insertUserEvent = require("../../connections/service/users_events/insertUserEvent");
 
 async function postUserEvents(req, res) {
   const data = req.body;
 
-  // Check if capacity < COUNT(users_events.id_user) where users_events.id_event = id_event;
-  //----participants < capacity COUNT(users_events) -> insertar en users_events
-
+  const { count } = await countUsers(data);
+  const { capacity } = await selectCapacityEvent(data);
+  if (count >= capacity) {
+    res.status(400).json({ error: "Operación no permitida" });
+    return;
+  }
   //(!) Validation
   const template = await insertUserEvent(data);
   //(!) Universal manager -> model response
