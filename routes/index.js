@@ -12,6 +12,7 @@ router.use("/utility", require('./utility'));
 // Other routes _____________________________________
 router.use("/template", require("./template"));
 router.use("/event", require("./event"));
+router.use("/center", require("./center"));
 router.use("/user", require("./user"));
 
 module.exports = router;
