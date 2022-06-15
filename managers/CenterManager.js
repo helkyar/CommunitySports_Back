@@ -15,6 +15,7 @@ const getCentersWithSportsManager = async () => {
                 }
             }
             if (!comprobate) {
+                delete center.sport_name
                 response.push(center)
             }
         }
