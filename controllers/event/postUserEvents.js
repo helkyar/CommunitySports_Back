@@ -7,6 +7,9 @@ async function postUserEvents(req, res) {
 
   const { count } = await countUsers(data);
   const { capacity } = await selectCapacityEvent(data);
+
+  console.log(count, capacity);
+
   if (count >= capacity) {
     res.status(400).json({ error: "Operación no permitida" });
     return;
