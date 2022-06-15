@@ -14,5 +14,7 @@ router.use("/template", require("./template"));
 router.use("/event", require("./event"));
 router.use("/center", require("./center"));
 router.use("/user", require("./user"));
+router.use("/center", require("./center"))
+router.use("/sport", require("./sport"))
 
 module.exports = router;
