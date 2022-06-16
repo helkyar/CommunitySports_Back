@@ -10,7 +10,7 @@ async function getUserEvents(req, res, next) {
 
     if (events) {
       events.map(async (event) => {
-        event.users = user;
+        event.users = [user];
         return event;
       });
     }
