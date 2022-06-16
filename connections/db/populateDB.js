@@ -8,13 +8,14 @@ const usersDB = require('./service/usersDB');
 const eventsDB = require('./service/eventsDB');
 const sportsCentersDB = require('./service/sportsCentersDB');
 const centersEventsDB = require('./service/centersEventsDB');
+const userEventsDB = require('./service/userEventsDB');
 
 const populateDB = async () => {
 
     console.log('Espera a que termine el mokeo');
 
     //Rellena la Tabla sports
-    await sportsDB(sports[00]);
+    await sportsDB(sports[0]);
     console.log('Tabla sports mokeada...');
 
     //Rellena la Tabla centers
@@ -36,6 +37,9 @@ const populateDB = async () => {
     //Rellena la Tabla centers_events
     await centersEventsDB(events.data)
     console.log('Tabla centers_events mokeada...');
+
+    //Rellena la Tabla users_events
+    await userEventsDB()
 }
 
 module.exports = populateDB

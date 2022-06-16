@@ -90,6 +90,7 @@ const createDB = async () => {
         )`)
         console.log('antes del Pool.query')
         const sports = await Pool.query(`SELECT * FROM sports`)
+
         if (sports.rows.length < 1) {
             console.log('en if llamada al populateDB')
             await populateDB();
