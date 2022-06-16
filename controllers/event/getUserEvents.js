@@ -10,7 +10,8 @@ async function getUserEvents(req, res, next) {
 
     if (events) {
       events.map(async (event) => {
-        return (event.users = user);
+        event.users = user;
+        return event;
       });
     }
     //(!) Universal manager -> model response
@@ -20,9 +21,8 @@ async function getUserEvents(req, res, next) {
         : res.status(404).json({ error: "Doesn't exist" });
     }, 1000);
   } catch (err) {
-    next(err)
+    next(err);
   }
-
 }
 
 module.exports = getUserEvents;
