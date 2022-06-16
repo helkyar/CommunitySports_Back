@@ -2,30 +2,35 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const UserManager = require(`../../${process.env.MANAGER}/UserManager`);
 
-async function checkLogin(req, res) {
-  console.log("Login controller");
-  const credentials = req.body;
-  // Incorrect login___________________________________
-  if (!credentials) {
-    res.status(400).json({ error: "nice try" });
-  }
+async function checkLogin(req, res, next) {
 
-  // Search user_______________________________________
-  const user = await UserManager.findName(credentials);
-  if (!user || !user[0]) {
-    return res.status(400).json({ error: "credenciales incorrectas" });
-  }
+  try {
+    console.log("Login controller");
+    const credentials = req.body;
+    // Incorrect login___________________________________
+    if (!credentials) {
+      res.status(400).json({ error: "nice try" });
+    }
 
-  // Cehck password____________________________________
-  const { username, id, password } = user[0];
-  const validPassword = await bcrypt.compare(credentials?.password, password);
-  if (!validPassword) {
-    return res.status(400).json({ error: "credenciales incorrectas" });
-  }
+    // Search user_______________________________________
+    const user = await UserManager.findName(credentials);
+    if (!user || !user[0]) {
+      return res.status(400).json({ error: "credenciales incorrectas" });
+    }
 
-  // Create token________________________________________
-  const token = jwt.sign({ id, username }, process.env.TOKEN_SECRET);
-  res.status(200).json({ token, username, id });
+    // Cehck password____________________________________
+    const { username, id, password } = user[0];
+    const validPassword = await bcrypt.compare(credentials?.password, password);
+    if (!validPassword) {
+      return res.status(400).json({ error: "credenciales incorrectas" });
+    }
+
+    // Create token________________________________________
+    const token = jwt.sign({ id, username }, process.env.TOKEN_SECRET);
+    res.status(200).json({ token, username, id });
+  } catch (err) {
+    next(err)
+  }
 }
 
 module.exports = checkLogin;
