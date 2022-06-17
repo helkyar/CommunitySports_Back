@@ -3,6 +3,7 @@ const selectCapacityEvent = require("../../connections/service/events/selectCapa
 const insertUserEvent = require("../../connections/service/users_events/insertUserEvent");
 
 async function postUserEvents(req, res) {
+  console.log(req.body);
   try {
     const data = req.body;
 
