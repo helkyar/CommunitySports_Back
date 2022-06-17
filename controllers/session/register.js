@@ -3,6 +3,7 @@ const UserManager = require(`../../${process.env.MANAGER}/UserManager`);
 
 async function register(req, res) {
   try {
+    console.log(req.body)
     console.log("Register controller");
     let data = req.body;
     //(!) Validation
@@ -14,7 +15,8 @@ async function register(req, res) {
       ? res.status(200).json(user[0])
       : res.status(400).json({ error: "Wrong format" });
   } catch (err) {
-    next(err)
+    console.log(err)
+    /* next(err) */
   }
 }
 
