@@ -1,5 +1,7 @@
 const insertUser = require('../../service/user/insertUser')
 const { v4 } = require('uuid');
+const bcrypt = require("bcrypt");
+
 
 /**
  * Llenara la tabla users
@@ -9,13 +11,15 @@ const { v4 } = require('uuid');
 const usersDB = async (arr) => {
     const response = []
     for (const user of arr) {
+        const salt = await bcrypt.genSalt(10);
+
         const newUser = {
             id: v4(),
             name: user.name,
             age: user.age,
             genre: user.genre,
             email: user.email,
-            password: user.password,
+            password: await bcrypt.hash(user.password, salt),
             subscriber: 0
         }
         response.push(await insertUser(newUser))
