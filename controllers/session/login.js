@@ -6,7 +6,7 @@ async function checkLogin(req, res, next) {
   try {
     console.log("Login controller");
     const credentials = req.body;
-    console.log(req.body)
+
     // Incorrect login___________________________________
     if (!credentials) {
       res.status(400).json({ error: "nice try" });
