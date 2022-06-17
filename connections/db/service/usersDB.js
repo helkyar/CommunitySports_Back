@@ -9,6 +9,7 @@ const { v4 } = require('uuid');
 const usersDB = async (arr) => {
     const response = []
     for (const user of arr) {
+
         const newUser = {
             id: v4(),
             name: user.name,

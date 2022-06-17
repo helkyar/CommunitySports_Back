@@ -1,7 +1,6 @@
 const Pool = require("../../getPool");
 
-const selectUser = async (data) => {
-  console.log(data);
+const selectUser = async ({ email, password }) => {
   try {
     const sport = await Pool.query(
       `SELECT * FROM users WHERE email = '${email}' AND password = '${password}'`
