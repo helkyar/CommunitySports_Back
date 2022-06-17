@@ -1,14 +1,17 @@
 const bcrypt = require("bcrypt");
-const UserManager = require(`../../${process.env.MANAGER}/UserManager`);
+const insertUser = require('../../connections/service/user/insertUser')
 
-async function register(req, res) {
+async function register(req, res, next) {
+  console.log(req.body);
+  console.log(insertUser);
   try {
     console.log("Register controller");
     let data = req.body;
     //(!) Validation
     const salt = await bcrypt.genSalt(10);
     data.password = await bcrypt.hash(data.password, salt);
-    const user = await UserManager.create(data);
+    data.subscriber = 0;
+    const user = await insertUser(data);
     //(!) Universal manager -> model response
     user !== null
       ? res.status(200).json(user[0])
