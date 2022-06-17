@@ -1,4 +1,3 @@
-const bcrypt = require("bcrypt");
 const insertUser = require('../../connections/service/user/insertUser');
 const getAge = require("../../utility/getAge");
 const jwt = require("jsonwebtoken");
@@ -9,9 +8,7 @@ async function register(req, res, next) {
     console.log("Register controller");
     let data = req.body;
     //(!) Validation
-    const salt = await bcrypt.genSalt(10);
     data.id = v4();
-    data.password = await bcrypt.hash(data.password, salt);
     data.subscriber = 0;
     data.age = getAge(data.age)
     console.log(data);
