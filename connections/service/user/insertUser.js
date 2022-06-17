@@ -9,7 +9,7 @@ const Pool = require('../../getPool');
 const insertUser = async (newUser) => {
 
     const query = `INSERT INTO users (id, name, age, genre, email, password, subscriber)
-    VALUES ('${newUser.id}', '${newUser.name}', '${newUser.age}', '${newUser.genre}', '${newUser.email}', '${newUser.password}', '${newUser.subscriber}')`
+    VALUES ('${newUser.id}', '${newUser.name | newUser.username}', '${newUser.age}', '${newUser.genre}', '${newUser.email}', '${newUser.password}', '${newUser.subscriber}')`
 
     try {
         await Pool.query(query)

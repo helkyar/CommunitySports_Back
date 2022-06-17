@@ -35,7 +35,7 @@ const createDB = async () => {
             age INTEGER,
             genre VARCHAR(10),
             email VARCHAR(50),
-            password VARCHAR(20),
+            password VARCHAR(100),
             subscriber INTEGER,
             PRIMARY KEY (id)
         )`)
